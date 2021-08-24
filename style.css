@@ -1,0 +1,10 @@
+section{
+    margin: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+}
+
+.hide {
+    display: none;
+}
