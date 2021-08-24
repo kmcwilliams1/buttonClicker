@@ -1,5 +1,6 @@
 
-
+// this has to stay at the top. it is for getting the high scores names and appending 
+// them to the page. do not move it, ya dingus!
 // let namee = localStorage.getItem("name") 
 //     var list = document.createElement("li")
 //     list.innerText = namee
@@ -9,66 +10,44 @@
 
 
 
-
-      
-      
-      // let numbers = [1,2,3,4,5,6]
-      // while (numbers.length > 0 ){
-         //    var randomNumber = Math.floor(Math.random()* numbers.length)
-         //    console.log(numbers[randomNumber])
-         //    numbers.splice(randomNumber , 1)
-         // }
-         
-         // //buttons and getting them to disappear on click
-         // const oneBtn = document.getElementById('1')
-         // const twoBtn = document.getElementById('2')
-         // const threeBtn = document.getElementById('3')
-         // const fourBtn = document.getElementById('4')
-         // const fiveBtn = document.getElementById('5')
-         // const sixBtn = document.getElementById('6')
-         // const clickMeEl = document.getElementsByClassName('clickMe')
-         
-         // clickMeEl.addEventListener('click' , function(){
-            //     this.id.ClassList.add('hide')  //how to get this to make buttons disappear on click?
-            // })
             
-            
-            
-            // //starting the game    why are the buttons showing and why isnt the timer going?
+            // //starting the game   
             const startEl = document.getElementById('start')
-
-
             startEl.addEventListener('click' , startGame)
-
             function startGame (e){
-               timerId = setInterval(timer, 1000)
-               timerEl.textContent = timeLeft;
+               // timerId = setInterval(timer, 1000)
+               // timerEl.textContent = timeLeft;
                e.preventDefault()
-
                startEl.classList.add('hide')
-      //          let numbers = [1,2,3,4,5,6]
-      //          while (numbers.length > 0 ){
-      //  var randomNumber = Math.floor(Math.random()* numbers.length)
-      //  console.log(numbers[randomNumber])
-      //  numbers.splice(randomNumber , 1)
-   //  }
-   //  for (let i = 0; i < randomNumber.length; i++) {
-   //    var button = document.createElement("button");
-   //    button.innerHTML = randomNumber[i];
-   //    var buttonDiv = document.getElementById("buttons");
-   //    buttonDiv.appendChild(button);
-    }
+               let numbers = [1,2,3,4,5,6]
+               while (numbers.length > 0 ){
+       var randomNumber = Math.floor(Math.random()* numbers.length)
+       console.log(numbers[randomNumber])
+       numbers.splice(randomNumber , 1)
 
-//}
+      var button = document.createElement("button");
+     
+      var buttonDiv = document.querySelector(".buttons");
+      button.innerHTML = numbers[randomNumber];
+      buttonDiv.appendChild(button);
+       
+   }
+  
+
+
+}
+//how to say if all buttons are clicked, refresh them?
+
+
+
 
 
 
 //timer   all working!
+
 // const timerEl = document.getElementById('timer');
 // var timeLeft = 10;
 // var timerId;
-
-
 // function timer () {
 //    timeLeft--;
 //    timerEl.textContent = timeLeft;
@@ -86,11 +65,7 @@
 // const scoresEl = document.getElementById('scores)
 // function endGame(){
 //     scoreEl.ClassList.remove('hide')
-//     buttonsEl.classList.add('hide')
-
 // }
-
-
 
 
 
@@ -100,12 +75,8 @@
 // clickEl.addEventListener('click' , submitName) 
 // function submitName(){
 // const nameEl = document.getElementById('name')
-// console.log('hello!')
 // var list = document.createElement("li")
 // list.innerText = nameEl.value
 // appendHereEl.append(list)
 // localStorage.setItem("name" , nameEl.value)
 // }
-
-
-
