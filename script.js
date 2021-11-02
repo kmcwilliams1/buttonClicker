@@ -7,17 +7,32 @@
 //     list.innerText = namee
 // const appendHereEl = document.getElementById('append-here') 
 //  appendHereEl.append(list)
+
+
+//adding ID's to the buttons
+
 let buttonDiv = document.querySelector(".buttons");
 
-let alreadyClicked = []
+let alreadyClicked = []  //when do i put an event in these parenthesis 
 buttonDiv.addEventListener('click', function hasItBeenClicked(event) {
-  if (event.target.matches("button")) {
-    let clickedNumber = parseInt(event.target.id) 
-    console.log(clickedNumber)
-      alreadyClicked.push(clickedNumber)   
-    for (let i = 0; i < clickedNumber; i++) {
+  if (event.target.matches("button")) { //how can i target "button" if it hasnt been created yet
+    let clickedNumber = parseInt(event.target.id)
+    console.log(clickedNumber) //why an if statement and not just a statement, what would be the else?
+    alreadyClicked.push(clickedNumber)
+    let hasBeenClicked = false
+    if(alreadyClicked.length === 0 && event.target.id === 1){
+      alreadyClicked.push(event.target.id)
+    }
+    for (let i = 1; i < clickedNumber; i++) {
       const currentNumber = i;
-       console.log(currentNumber)
+      alreadyClicked.includes(currentNumber)
+      if (alreadyClicked.includes(currentNumber) === false) {
+        hasBeenClicked = false
+        break
+      }
+    }
+    if(hasBeenClicked === true){
+      button.addClass('hide')
     }
   }
 })
