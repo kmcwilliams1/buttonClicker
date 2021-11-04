@@ -13,30 +13,6 @@
 
 let buttonDiv = document.querySelector(".buttons");
 
-let alreadyClicked = []  //when do i put an event in these parenthesis 
-buttonDiv.addEventListener('click', function hasItBeenClicked(event) {
-  if (event.target.matches("button")) { //how can i target "button" if it hasnt been created yet
-    let clickedNumber = parseInt(event.target.id)
-    console.log(clickedNumber) //why an if statement and not just a statement, what would be the else?
-    alreadyClicked.push(clickedNumber)
-    let hasBeenClicked = false
-    if(alreadyClicked.length === 0 && event.target.id === 1){
-      alreadyClicked.push(event.target.id)
-    }
-    for (let i = 1; i < clickedNumber; i++) {
-      const currentNumber = i;
-      alreadyClicked.includes(currentNumber)
-      if (alreadyClicked.includes(currentNumber) === false) {
-        hasBeenClicked = false
-        break
-      }
-    }
-    if(hasBeenClicked === true){
-      button.addClass('hide')
-    }
-  }
-})
-
 
 // //starting the game   
 const startEl = document.getElementById('start')
@@ -44,23 +20,57 @@ startEl.addEventListener('click', startGame)
 function startGame(event) {
   // timerId = setInterval(timer, 1000)
   // timerEl.textContent = timeLeft;
+  game()
   event.preventDefault()
   startEl.classList.add('hide')
-  let numbers = [1, 2, 3, 4, 5, 6]
-  while (numbers.length > 0) {
-    let randomNumber = Math.floor(Math.random() * numbers.length)
-    console.log(numbers[randomNumber])
-    let button = document.createElement("button");
+}
 
-    button.setAttribute("id", numbers[randomNumber])
-    button.innerHTML = numbers[randomNumber];
-    buttonDiv.appendChild(button);
-    numbers.splice(randomNumber, 1)
+//how to say if all buttons are clicked, refresh them?
+// if(hasBeenClicked.length === 5){
+//   game()
+// }
+
+const game = () => {
+  let numbers = [1, 2, 3, 4, 5, 6]
+  let hasBeenClicked = []  
+
+  function createButtons () {
+    while (numbers.length > 0) {
+      let button = document.createElement("button");
+      let randomNumber = Math.floor(Math.random() * numbers.length)
+      console.log(numbers[randomNumber])
+      button.setAttribute("id", numbers[randomNumber])
+      button.innerHTML = numbers[randomNumber];
+      buttonDiv.appendChild(button);
+      numbers.splice(randomNumber, 1)
+    }
   }
 
+  buttonDiv.addEventListener('click', function(event) {
+      let clickedNumber = parseInt(event.target.id)
+      console.log(clickedNumber)
+      let alreadyClicked = false
+      for (let i = 1; i < 6; i++) {
+        const currentNumber = i;
+        hasBeenClicked.includes(currentNumber)
+        if (hasBeenClicked.length === 0 && clickedNumber === 1) {
+          console.log("yes!")
+          alreadyClicked === true
+          button.addClass('hide')
+          hasBeenClicked.push(clickedNumber)
+        }
+       }
+  }
+  
+  )
+ 
 
+  createButtons()
 }
-//how to say if all buttons are clicked, refresh them?
+
+
+
+
 
 
 
