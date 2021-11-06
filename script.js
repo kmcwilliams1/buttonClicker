@@ -11,7 +11,7 @@
 
 //adding ID's to the buttons
 
-let buttonDiv = document.querySelector(".buttons");
+
 
 
 // //starting the game   
@@ -33,35 +33,42 @@ function startGame(event) {
 
 let numbers = [1, 2, 3, 4, 5, 6]
 let hasBeenClicked = []
+let numberz = [1, 2, 3, 4, 5, 6]
 
 function createButtons() {
+  let buttonDiv = document.querySelector(".buttons");
   while (numbers.length > 0) {
     let button = document.createElement("button");
     let randomNumber = Math.floor(Math.random() * numbers.length)
-    console.log(numbers[randomNumber])
+    // console.log(numbers[randomNumber])
+    button.className = "buttons"
     button.setAttribute("id", numbers[randomNumber])
     button.innerHTML = numbers[randomNumber];
-    buttonDiv.appendChild(button);
     numbers.splice(randomNumber, 1)
+    button.onclick = function () {
+      getNumber(this)
+    }
+    buttonDiv.appendChild(button);
   }
 }
 
-buttonDiv.addEventListener('click', function  (event) {
-  let clickedNumber = parseInt(event.target.id)
-  console.log(clickedNumber)
+
+ function getNumber (event) {
+  let clickedNumber = parseInt(event.innerHTML)
   let alreadyClicked = false
-  for (let i = 1; i < 6; i++) {
-    const currentNumber = i;
-    hasBeenClicked.includes(currentNumber)
-    if (hasBeenClicked.length === 0 && clickedNumber === 1) {
-      console.log("yes!")
-      alreadyClicked === true
-      let word = event.target.id
-      word.addClass('hide')
-      hasBeenClicked.push(clickedNumber)
-    }
+  console.log(clickedNumber)
+  if(clickedNumber === numberz[0] && numberz && alreadyClicked === false)
+   {
+    alreadyClicked = true
+    numberz.shift()
+    this.addClass("hide")
+    console.log(numberz)
+    hasBeenClicked.push(clickedNumber)
+    console.log(hasBeenClicked)
+  } else {
+    console.log ("wrong number/ clicked same one twice")
   }
-})
+}
 
 
 
